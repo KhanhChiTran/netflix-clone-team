@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from "react";
+
 import Banner from "../components/Banner";
-import Row from "../components/Row";
-import requests from "../Requests";
-import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Loading from "../components/Loading";
+import Navbar from "../components/Navbar";
+import Row from "../components/Row";
+import requests from "../Requests";
 
 function Home() {
   const [loading, setLoading] = useState(false);
@@ -17,21 +18,17 @@ function Home() {
     const fetchdata = async () => {
       setLoading(true);
       try {
-        const latestData = await fetch(requests.fetchLatest).then((response) =>
-          response.json()
-        );
+        const latestData = await fetch(requests.fetchLatest)
+                               .then((response) => response.json());
         setLatestMovies(latestData.results);
-        const trendingData = await fetch(requests.fetchTrending).then(
-          (response) => response.json()
-        );
+        const trendingData = await fetch(requests.fetchTrending)
+                                 .then((response) => response.json());
         setTrendingMovies(trendingData);
-        const upcomingData = await fetch(requests.fetchUpcoming).then(
-          (response) => response.json()
-        );
+        const upcomingData = await fetch(requests.fetchUpcoming)
+                                 .then((response) => response.json());
         setUpcomingMovies(upcomingData);
-        const topratedData = await fetch(requests.fetchTopRated).then(
-          (response) => response.json()
-        );
+        const topratedData = await fetch(requests.fetchTopRated)
+                                 .then((response) => response.json());
         setTopRatedMovies(topratedData);
         setLoading(false);
 
@@ -48,10 +45,12 @@ function Home() {
       <Navbar />
       <Banner />
       {trendingMovies && (
-        <Row title="POPULAR" data={trendingMovies} />
+        <Row title="POPULAR" data={
+    trendingMovies} />
       )}
       {latestMovies && <Row title="Latest" data={latestMovies} />}
-      {upcomingMovies && <Row title="Upcoming" data={upcomingMovies} />}
+      {upcomingMovies && <Row title="Upcoming" data={
+    upcomingMovies} />}
       {topRatedMovies && <Row title="Top Rated" data={topRatedMovies} />}
       <Footer />
     </div>
