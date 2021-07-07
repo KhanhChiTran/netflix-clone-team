@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 
 import Banner from "../components/Banner";
 import Footer from "../components/Footer";
@@ -18,20 +18,23 @@ function Home() {
     const fetchdata = async () => {
       setLoading(true);
       try {
-        const latestData = await fetch(requests.fetchLatest)
-                               .then((response) => response.json());
+        const latestData = await fetch(requests.fetchLatest).then((response) =>
+          response.json()
+        );
         setLatestMovies(latestData.results);
-        const trendingData = await fetch(requests.fetchTrending)
-                                 .then((response) => response.json());
+        const trendingData = await fetch(requests.fetchTrending).then(
+          (response) => response.json()
+        );
         setTrendingMovies(trendingData);
-        const upcomingData = await fetch(requests.fetchUpcoming)
-                                 .then((response) => response.json());
+        const upcomingData = await fetch(requests.fetchUpcoming).then(
+          (response) => response.json()
+        );
         setUpcomingMovies(upcomingData);
-        const topratedData = await fetch(requests.fetchTopRated)
-                                 .then((response) => response.json());
+        const topratedData = await fetch(requests.fetchTopRated).then(
+          (response) => response.json()
+        );
         setTopRatedMovies(topratedData);
         setLoading(false);
-
       } catch (error) {
         console.log(error);
       }
@@ -44,13 +47,9 @@ function Home() {
       {loading && <Loading />}
       <Navbar />
       <Banner />
-      {trendingMovies && (
-        <Row title="POPULAR" data={
-    trendingMovies} />
-      )}
+      {trendingMovies && <Row title="POPULAR" data={trendingMovies} />}
       {latestMovies && <Row title="Latest" data={latestMovies} />}
-      {upcomingMovies && <Row title="Upcoming" data={
-    upcomingMovies} />}
+      {upcomingMovies && <Row title="Upcoming" data={upcomingMovies} />}
       {topRatedMovies && <Row title="Top Rated" data={topRatedMovies} />}
       <Footer />
     </div>
