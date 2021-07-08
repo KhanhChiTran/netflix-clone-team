@@ -17,30 +17,32 @@ function Home() {
   useEffect(() => {
     const fetchdata = async () => {
       try {
-        const topratedData = await fetch(requests.fetchTopRated).then(
-          (response) => response.json()
+        const topratedData = await fetch(
+          "/.netlify/functions/get-all-top-rated"
+        ).then((response) => response.json());
+        setTopRatedMovies(topratedData.data);
+        setNum(
+          Math.floor(Math.ceil(Math.random() * topratedData.data.length) - 1)
         );
-        setTopRatedMovies(topratedData);
-        setNum(Math.floor(Math.ceil(Math.random() * topratedData.length) - 1));
         // Trending
-        const trendingData = await fetch(requests.fetchTrending).then(
-          (response) => response.json()
-        );
-        setTrendingMovies(trendingData);
+        const trendingData = await fetch(
+          "/.netlify/functions/get-all-popular"
+        ).then((response) => response.json());
+        setTrendingMovies(trendingData.data);
         /**
          * We just NEEDED 2 of these data to show on
          * viewable screen at the very first ( reduce loading time)
          * */
         setLoading(false);
-        const upcomingData = await fetch(requests.fetchUpcoming).then(
-          (response) => response.json()
-        );
-        setUpcomingMovies(upcomingData);
+        const upcomingData = await fetch(
+          "/.netlify/functions/get-all-upcoming"
+        ).then((response) => response.json());
+        setUpcomingMovies(upcomingData.data);
 
-        const latestData = await fetch(requests.fetchLatest).then((response) =>
-          response.json()
-        );
-        setLatestMovies(latestData.results);
+        const latestData = await fetch(
+          "/.netlify/functions/get-all-latest"
+        ).then((response) => response.json());
+        setLatestMovies(latestData.data);
       } catch (error) {
         setTimeout(() => setLoading(false), 3000);
         console.log(error);

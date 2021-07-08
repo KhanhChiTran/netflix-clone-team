@@ -8,6 +8,7 @@ import Search from "./pages/Search";
 import Player from "./pages/Player";
 // import Footer from "./components/Footer";
 import TvShow from "./pages/TvShows";
+import Movies from "./pages/Movies";
 
 ///// STYLING:
 import "./sass/main.scss";
@@ -29,6 +30,9 @@ function App() {
         </Route>
         <Route path="/ep">
           <Episode />
+        </Route>
+        <Route path="/movies">
+          <Movies />
         </Route>
         <Route path="/search/">
           <Search search={search} />

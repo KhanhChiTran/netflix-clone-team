@@ -63,6 +63,15 @@ export default function Navbar() {
               </Link>
             </li>
             <li className="nav__list-item">
+              <Link
+                to="/movies"
+                className="nav__link"
+                onClick={closeMobileMenu}
+              >
+                Movies
+              </Link>
+            </li>
+            {/* <li className="nav__list-item">
               <Link to="/" className="nav__link" onClick={closeMobileMenu}>
                 Movies
               </Link>
@@ -71,7 +80,7 @@ export default function Navbar() {
               <Link to="/" className="nav__link" onClick={closeMobileMenu}>
                 New & Popular
               </Link>
-            </li>
+            </li> */}
             {/* <li className="nav__list-item">
               <Link to="/" className="nav__link" onClick={closeMobileMenu}>
                 My List

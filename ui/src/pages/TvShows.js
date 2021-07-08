@@ -11,19 +11,26 @@ export default function Series() {
   const [loading, setLoading] = useState(true);
   const history = useHistory();
   const baseImageUrl = "https://image.tmdb.org/t/p/w500";
+  const [num, setNum] = useState(5);
+  const handleResize = () => {
+    setNum(Math.floor(window.innerWidth / 250));
+  };
 
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+  useEffect(() => {
+    setNum(Math.floor(window.innerWidth / 250));
+  }, []);
   useEffect(() => {
     setLoading(true);
 
-    fetch("http://localhost:5000/api/series")
+    fetch("/.netlify/functions/get-all-series")
       .then((res) => res.json())
       .then((result) => {
-        if (result) {
-          setSeries(result);
-          setLoading(false);
-        } else {
-          console.log(result.message);
-        }
+        setSeries(result.data);
+        setLoading(false);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -43,7 +50,7 @@ export default function Series() {
     <Layout>
       <div className="row">
         {loading && <Loading />}
-        <Carousel itemsToShow={5} itemsToScroll={5}>
+        <Carousel itemsToShow={num} itemsToScroll={1}>
           {series.map((serie, index) => {
             return (
               <div

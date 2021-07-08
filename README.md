@@ -8,9 +8,13 @@ This is a full-stack project based on React.
 
 # DEV NOTES:
 
-[move all branches to master](https://stackoverflow.com/questions/2862590/how-to-replace-master-branch-in-git-entirely-from-another-branch)
+1. ### [move all branches to master](https://stackoverflow.com/questions/2862590/how-to-replace-master-branch-in-git-entirely-from-another-branch)
+2. ### install netlify-cli global
+3. ### netlify init
+4. ### after init, run `netlify functions:create` choose a template, then run `netlify dev`
 
 ## DEPENDENCIES USED FOR THE PROJECT:
+
 - [axios](https://www.npmjs.com/package/axios) for data fetching
 - [react-router-dom](https://www.npmjs.com/package/react-router-dom) for routing
 - [react-player](https://www.npmjs.com/package/react-player) for playing a youtube video

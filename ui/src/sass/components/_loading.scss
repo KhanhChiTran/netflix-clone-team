@@ -8,6 +8,9 @@
   //   background: rgba(0, 0, 0, 0.3);
   background: black;
   z-index: 2021;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .loader {
@@ -16,9 +19,19 @@
   border-top: 10px solid #e67b7b;
   width: 120px;
   height: 120px;
-  margin: 40vh auto;
+
   -webkit-animation: spin 1s linear infinite; /* Safari */
   animation: spin 2s linear infinite;
+}
+
+.site-logo__loading {
+  // position: fixed;
+  // top: 50%;
+  // left: 50%;
+  // transform: translate(-50%, -50%);
+  width: 71px;
+  z-index: 2000;
+  position: absolute;
 }
 
 /* Safari */
